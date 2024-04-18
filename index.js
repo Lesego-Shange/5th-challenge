@@ -78,9 +78,10 @@ const createHtml = (athlete) => {
   fragment.appendChild(title);
   const list = document.createElement(dl);
 
-  const day = date.getDate();
-  const month = MONTHS[date.month];
-  const year = date.year;
+  const eventDate = new Date(date);
+  const day = eventDate.getDate();
+  const month = MONTHS[eventDate.getMonth()];
+  const year = eventDate.getFullYear();
 
   first, second, third, fourth = timeAsArray;
   total = first + second + third + fourth;
