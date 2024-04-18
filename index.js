@@ -94,7 +94,7 @@ const createHtml = (athlete) => {
     <dd>${firstName} ${surname}</dd>
 
     <dt>Total Races</dt>
-    <dd>${races}</dd>
+    <dd>${races.length}</dd>
 
     <dt>Event Date (Latest)</dt>
     <dd>${day month year}</dd>
