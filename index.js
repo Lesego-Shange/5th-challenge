@@ -83,8 +83,9 @@ const createHtml = (athlete) => {
   const month = MONTHS[eventDate.getMonth()];
   const year = eventDate.getFullYear();
 
-  first, second, third, fourth = timeAsArray;
-  total = first + second + third + fourth;
+  const total = timeAsArray.reduce((acc, curr) => acc + curr, 0);
+  const hours = Math.floor(total / 60);
+  const minutes = total % 60;
 
   const hours = total / 60;
   const minutes = total / hours / 60;
