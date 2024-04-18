@@ -1,19 +1,19 @@
 // scripts.js
 
 const MONTHS = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-]
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
 
 const data = {
   response: {
@@ -28,11 +28,11 @@ const data = {
         id: "NM372",
         races: [
           {
-            date: '2022-11-18T20:00:00.000Z',
+            date: "2022-11-18T20:00:00.000Z",
             time: [9, 7, 8, 6],
           },
           {
-            date: '2022-12-02T20:00:00.000Z',
+            date: "2022-12-02T20:00:00.000Z",
             time: [6, 7, 8, 7],
           },
         ],
@@ -44,19 +44,19 @@ const data = {
         id: "SV782",
         races: [
           {
-            date: '2022-11-18T20:00:00.000Z',
+            date: "2022-11-18T20:00:00.000Z",
             time: [10, 8, 3, 12],
           },
           {
-            date: '2022-11-25T20:00:00.000Z',
+            date: "2022-11-25T20:00:00.000Z",
             time: [6, 8, 9, 11],
           },
           {
-            date: '2022-12-02T20:00:00.000Z',
+            date: "2022-12-02T20:00:00.000Z",
             time: [10, 11, 4, 8],
           },
           {
-            date: '2022-12-09T20:00:00.000Z',
+            date: "2022-12-09T20:00:00.000Z",
             time: [9, 8, 9, 11],
           },
         ],
@@ -73,7 +73,7 @@ const createHtml = (athlete) => {
 
   const fragment = document.createDocumentFragment();
 
-  const title = document.createElement('h2');
+  const title = document.createElement("h2");
   title.textContent = id;
   fragment.appendChild(title);
   const list = document.createElement(dl);
@@ -87,8 +87,6 @@ const createHtml = (athlete) => {
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
 
-
-
   list.innerHTML = /* html */ `
     <dt>Athlete</dt>
     <dd>${firstName} ${surname}</dd>
@@ -100,12 +98,19 @@ const createHtml = (athlete) => {
     <dd>${day} ${month} ${year}</dd>
 
     <dt>Total Time (Latest)</dt>
-    <dd>${hours.padStart(2, 0) minutes}</dd>
+    <dd>${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}</dd>
   `;
 
   fragment.appendChild(list);
-}
+  return fragment;
+};
 
-[NM372], [SV782] = data
-document.querySelector(NM372).appendChild(createHtml(NM372));
-document.querySelector(SV782).appendChild(createHtml(SV782));
+const { NM372, SV782 } = data.response.data;
+document
+  .querySelector(`[data-athlete="${NM372.id}"]`)
+  .appendChild(createHtml(NM372));
+document
+  .querySelector(`[data-athlete="${SV782.id}"]`)
+  .appendChild(createHtml(SV782));
