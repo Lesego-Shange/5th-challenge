@@ -87,12 +87,11 @@ const createHtml = (athlete) => {
   const hours = Math.floor(total / 60);
   const minutes = total % 60;
 
-  const hours = total / 60;
-  const minutes = total / hours / 60;
+
 
   list.innerHTML = /* html */ `
     <dt>Athlete</dt>
-    <dd>${firstName surname}</dd>
+    <dd>${firstName} ${surname}</dd>
 
     <dt>Total Races</dt>
     <dd>${races}</dd>
